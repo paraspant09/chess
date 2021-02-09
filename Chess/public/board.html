@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="/style.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    
+  </head>
+  <body>
+    <div id="LoadingGif">
+      <img src="\Loading.gif" alt="Loading...">
+    </div>
+    <div id="result" class="hideResult">
+
+    </div>
+    <p id="OppositionTimer">
+
+    </p>
+    <div class="PlayingArea">
+      <div id="Board">
+
+      </div>
+      <div id="OptionsOfpawnPromotion">
+        <button type="button" id="Queen" class="Options" onclick="PawnPromotionSendData(0)" name="button"></button>
+        <button type="button" id="Rook" class="Options" onclick="PawnPromotionSendData(1)" name="button"></button>
+        <button type="button" id="Bishop" class="Options" onclick="PawnPromotionSendData(2)" name="button"></button>
+        <button type="button" id="knight" class="Options" onclick="PawnPromotionSendData(3)" name="button"></button>
+      </div>
+    </div>
+    <p id="Timer">
+
+    </p>
+    <button id="Engine">Engine</button>
+    <script>
+    for (let i=8; i > 0 ; i--) {
+      for (let j=0; j < 8 ; j++) {
+        let cls="";
+        if((i%2==0 && j%2==0) || (i%2!=0 && j%2!=0))
+          cls="white";
+        else {
+          cls="black";
+        }
+        let id=String.fromCharCode(j+65)+i;
+        document.getElementById('Board').innerHTML+="<div id="+id+" class="+cls+" ></div>";
+      }
+    }
+    </script>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="/chess-engine.js"></script>
+    <script type="text/javascript" src="/gamescript.js"></script>
+    <script type="text/javascript" src="/script.js"></script>
+    <script type="text/javascript" src="/matecheck.js"></script>
+  </body>
+</html>
